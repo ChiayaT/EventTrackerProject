@@ -10,6 +10,6 @@ public interface DayService {
 	Day retrieveDay(int dayId);
 	Day create(Day day);
 	Day update(int dayId, Day updatingDay);
-	boolean delete(int dayId);
+	void delete(int dayId);
 	
 }

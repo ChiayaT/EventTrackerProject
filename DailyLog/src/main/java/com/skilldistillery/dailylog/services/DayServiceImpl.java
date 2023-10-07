@@ -21,25 +21,28 @@ public class DayServiceImpl implements DayService {
 
 	@Override
 	public Day retrieveDay(int dayId) {
-		return dayRepo.getById(dayId);
+		return dayRepo.searchById(dayId);
 	}
 
 	@Override
 	public Day create(Day day) {
-		dayRepo.save(day);
+		dayRepo.saveAndFlush(day);
 		return day;
 	}
 
 	@Override
 	public Day update(int dayId, Day updatingDay) {
-		// TODO Auto-generated method stub
-		return null;
+		Day origonal = dayRepo.searchById(dayId);
+		origonal.setTitle(updatingDay.getTitle());
+		origonal.setRating(updatingDay.getRating());
+		origonal.setComment(updatingDay.getComment());
+		dayRepo.saveAndFlush(origonal);
+		return origonal;
 	}
 
 	@Override
-	public boolean delete(int dayId) {
-		// TODO Auto-generated method stub
-		return false;
+	public void delete(int dayId) {
+		dayRepo.deleteById(dayId);
 	}
 
 }
