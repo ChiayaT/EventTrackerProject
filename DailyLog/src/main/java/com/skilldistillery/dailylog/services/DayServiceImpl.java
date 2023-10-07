@@ -21,13 +21,13 @@ public class DayServiceImpl implements DayService {
 
 	@Override
 	public Day retrieveDay(int dayId) {
-		return null;
+		return dayRepo.getById(dayId);
 	}
 
 	@Override
 	public Day create(Day day) {
-		// TODO Auto-generated method stub
-		return null;
+		dayRepo.save(day);
+		return day;
 	}
 
 	@Override
