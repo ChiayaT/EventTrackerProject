@@ -10,7 +10,6 @@ public interface DayRepository extends JpaRepository<Day, Integer> {
 
 	Day searchById(int dayid);
 	
-	List<Day> findByRating(int rating);
 
 	
 	
