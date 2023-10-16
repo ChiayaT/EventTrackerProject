@@ -230,6 +230,7 @@ function deleteLog(dayId) {
 }
 
 function displayUpdate(day) {
+	console.log(day);
 	let dataDiv = document.getElementById('editDayFormDiv');
 	dataDiv.textContent = '';
 	let form = document.createElement('form');
@@ -266,21 +267,23 @@ function displayUpdate(day) {
 
 	let update = document.createElement('button');
 	update.textContent = 'Update Log';
-	form.appendChild(update);
-	if (title.value != '') {
-		day.title = title.value;
-	};
-	day.rating = rating.value;
-	day.comment = comment.value;
+	dataDiv.appendChild(update);
+	console.log(day);
 	update.addEventListener('click', function(e) {
 		e.preventDefault();
+	console.log(title.value + 'title')
+		if (title.value != '') {;
+		day['title'] = title.value;
+	};
+	day['rating'] = rating.value;
+	day['comment'] = comment.value;
+	console.log(day);
 		updateLog(day);
 	});
 
 }
 
 function updateLog(day) {
-	console.log(day)
 	let xhr = new XMLHttpRequest();
 	xhr.open('PUT', 'api/days/' + day.id);
 	xhr.setRequestHeader('Content-type', 'application/json');
