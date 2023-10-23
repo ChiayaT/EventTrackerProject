@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Day } from '../models/day';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -55,6 +56,6 @@ export class DayService {
     }
   constructor(private http: HttpClient) {
   }
-  private baseUrl = 'http://localhost:8084/';
-  private url = this.baseUrl + 'api/days';
+  //private baseUrl = 'http://localhost:8084/';
+  private url = environment.baseUrl + 'api/days';
 }
